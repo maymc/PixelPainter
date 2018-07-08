@@ -1,7 +1,20 @@
+body {
+    margin: 100px;
+}
+
+#pixelPainter{
+    display: flex;
+    flex-flow: row wrap;
+    border: 1px solid black;
+    margin: 0;
+    height: 700px;
+    width: 1000px;
+}
+
 #colorBody {
-    /* border: 1px solid black; */
-    width: 200px;
-    height: 600px;
+    border: 1px solid red;
+    height: 332px;
+    width: 180px;
 }
 
 .row {
@@ -14,9 +27,31 @@
 
 .pixel{
     display: flex;
+    flex-flow: row nowrap;
+    border: 1px solid black;
+    height: 30px;
+    width: 30px;
+}
+
+#canvasBody {
+    border: 1px solid blue;
+    height: 602px;
+    width: 600px;
+    margin-left: 100px;
+}
+
+.canvasRow {
+    display: flex;
+    flex-flow: row nowrap; 
+    /* border: 1px solid black; */
+    height: 60px;
+    width: 600px;
+}
+
+.square{
+    display: flex;
     flex-flow: row wrap;
     border: 1px solid black;
-    width: 30px;
-    height: 30px;
-
+    height: 60px;
+    width: 60px;
 }

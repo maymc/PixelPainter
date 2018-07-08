@@ -5,16 +5,17 @@ body {
 #pixelPainter{
     display: flex;
     flex-flow: row wrap;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin: 0;
     height: 700px;
     width: 1000px;
 }
 
-#colorBody {
-    border: 1px solid red;
-    height: 332px;
+#colorSwatchBody {
+    /* border: 1px solid red; */
+    height: 500px;
     width: 180px;
+    text-align: center;
 }
 
 .row {
@@ -31,10 +32,11 @@ body {
     border: 1px solid black;
     height: 30px;
     width: 30px;
+    cursor: pointer;
 }
 
 #canvasBody {
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     height: 602px;
     width: 600px;
     margin-left: 100px;
@@ -54,4 +56,29 @@ body {
     border: 1px solid black;
     height: 60px;
     width: 60px;
+}
+
+#erase {
+    margin: 30px 0;
+    padding: 0 20px;
+}
+
+#clear {
+    margin: 0;
+    padding: 0 20px;
+}
+
+button{
+    cursor: pointer;
+    box-shadow: 0 4px #999;
+    font-weight: bold;
+    font-size: 25px;
+    border: 2px solid black;
+    border-radius: 15px;
+
+}
+button:active {
+    background-color: lightskyblue;
+    box-shadow: 0 4px #666;
+    transform: translateY(3px);
 }

@@ -10,7 +10,7 @@ let pixelPainter = (function(){
     const pixelPainterDiv = document.getElementById("pixelPainter");
 
     let colorSwatchBody = document.createElement("div");
-    colorSwatchBody.id = "colorBody";
+    colorSwatchBody.id = "colorSwatchBody";
     pixelPainterDiv.appendChild(colorSwatchBody);
 
     //create the rows and columns of pixels
@@ -27,7 +27,7 @@ let pixelPainter = (function(){
     }
 
     //apply a color to each pixel and add an event listener to each pixel
-    var pixelColor = document.getElementsByClassName("pixel");
+    let pixelColor = document.getElementsByClassName("pixel");
     for(var i=0; i<colors.length; i++){
         pixelColor[i].style.backgroundColor = colors[i];
         pixelColor[i].addEventListener("click", pickColor);
@@ -56,7 +56,7 @@ let pixelPainter = (function(){
         }
     }
 
-    var gridSquare = document.getElementsByClassName("square");
+    let gridSquare = document.getElementsByClassName("square");
     for(var i=0; i<gridSquare.length; i++){
         gridSquare[i].addEventListener("click", colorSquare);
     }
@@ -65,6 +65,41 @@ let pixelPainter = (function(){
         console.log("check selectedColor: " + selectedColor);
         this.style.backgroundColor = selectedColor;
     }
+
+    //Erase button
+    let eraseBtn = document.createElement("button");
+    eraseBtn.type = "button";
+    eraseBtn.id = "erase";
+    eraseBtn.innerHTML = "erase";
+    colorSwatchBody.appendChild(eraseBtn);
+    
+    let eraseBtnElem = document.getElementById("erase");
+    eraseBtnElem.addEventListener("click", eraseColor);
+
+    function eraseColor(){
+        console.log("erase was clicked");
+        //Set the selected color to white to "erase" the square's color
+        selectedColor = "white";
+        console.log("erase selectedColor: " + selectedColor);
+    }
+
+    //Clear button
+    let clearBtn = document.createElement("button");
+    clearBtn.type = "button";
+    clearBtn.id = "clear";
+    clearBtn.innerHTML = "clear";
+    colorSwatchBody.appendChild(clearBtn);
+
+    let clearBtnElem = document.getElementById("clear");
+    clearBtnElem.addEventListener("click", clearCanvas);
+
+    function clearCanvas(){
+        console.log("clear was clicked");
+        for(var i=0; i<gridSquare.length; i++){
+            gridSquare[i].style.backgroundColor = "";
+        }
+    }
+
 
 
 

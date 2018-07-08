@@ -1,5 +1,6 @@
 let pixelPainter = (function(){
 
+
     const pixelPainterDiv = document.getElementById("pixelPainter");
 
     let colorSwatchBody = document.createElement("div");
@@ -18,6 +19,11 @@ let pixelPainter = (function(){
         }
 
     }
+
+    let colors = ["indianred", "lightcoral","salmon","pink","lightpink","hotpink","coral","tomato","orangered","gold","yellow","lightyellow","lavender","thistle","plum","greenyellow","chartreuse","lawngreen","aqua","cyan","lightcyan","cornsilk","blanchedalmond","bisque","white","snow","honeydew","gainsboro","lightgray","silver","darksalmon","lightsalmon","crimson","deeppink","mediumvioletred","palevioletred","darkorange","orange","lemonchiffon","lightgoldenrodyellow","papayawhip","violet","orchid","fuchsia","lime","limegreen","palegreen","paleturquoise","aquamarine","turquoise","navajowhite","wheat","burlywood","dimgray","lightslategray","dimslategray","skyblue","lightskyblue","dodgerblue","purple","darkorchid","indigo","seagreen","forestgreen","green","teal","darkcyan"];
+
+    console.log(colors.length);
+    
 
 
 

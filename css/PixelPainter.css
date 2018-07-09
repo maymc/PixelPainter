@@ -61,6 +61,7 @@ body {
     border-right: 1px solid black;
     height: 60px;
     width: 60px;
+    cursor: pointer;
 }
 
 #erase {
@@ -83,7 +84,61 @@ button{
 }
 
 button:active {
-    background-color: lightskyblue;
+    background-color: yellow;
     box-shadow: 0 4px #666;
     transform: translateY(3px);
+}
+
+@media only screen and (max-width: 1024px) {
+    #canvasBody {
+        /* border: 1px solid blue; */
+        height: 452px;
+        width: 450px;
+        margin-left: 70px;
+    }
+    .canvasRow {
+        display: flex;
+        flex-flow: row nowrap; 
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        height: 45px;
+        width: 450px;
+    }
+    
+    .square{
+        display: flex;
+        flex-flow: row wrap;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        height: 45px;
+        width: 45px;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 820px) {
+    #canvasBody {
+        /* border: 1px solid blue; */
+        height: 302px;
+        width: 300px;
+        margin-left: 50px;
+    }
+    .canvasRow {
+        display: flex;
+        flex-flow: row nowrap; 
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+        height: 30px;
+        width: 300px;
+    }
+    
+    .square{
+        display: flex;
+        flex-flow: row wrap;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+    }
 }

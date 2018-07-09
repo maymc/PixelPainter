@@ -1,5 +1,5 @@
 body {
-    margin: 100px;
+    margin: 45px;
 }
 
 #pixelPainter{
@@ -16,20 +16,23 @@ body {
     height: 500px;
     width: 180px;
     text-align: center;
+
 }
 
 .row {
     display: flex;
     flex-flow: row nowrap; 
-    /* border: 1px solid black; */
     height: 30px;
     width: 180px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
 }
 
 .pixel{
     display: flex;
     flex-flow: row nowrap;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
     height: 30px;
     width: 30px;
     cursor: pointer;
@@ -45,7 +48,8 @@ body {
 .canvasRow {
     display: flex;
     flex-flow: row nowrap; 
-    /* border: 1px solid black; */
+    border-top: 1px solid black;
+    border-left: 1px solid black;
     height: 60px;
     width: 600px;
 }
@@ -53,7 +57,8 @@ body {
 .square{
     display: flex;
     flex-flow: row wrap;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
     height: 60px;
     width: 60px;
 }
@@ -75,8 +80,8 @@ button{
     font-size: 25px;
     border: 2px solid black;
     border-radius: 15px;
-
 }
+
 button:active {
     background-color: lightskyblue;
     box-shadow: 0 4px #666;

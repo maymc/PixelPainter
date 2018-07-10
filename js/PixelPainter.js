@@ -5,7 +5,7 @@ let pixelPainter = (function(){
     /*********************/
     
     //Colors, stamps, shapes, symbols that will fill the palette
-    let colorsSymbols = ["indianred","palegoldenrod","darkred","turquoise","thistle","lawngreen","lightcoral","indigo","salmon", "darksalmon","paleturquoise","mediumturquoise","lightslategray","lavender","dodgerblue","lightsalmon","pink","slategray","firebrick","darkmagenta","aquamarine","cornflowerblue","mediumslateblue","lightpink","lime","deepskyblue","peachpuff","hotpink","deeppink","khaki","crimson","limegreen","orange","midnightblue","darkslategray","plum","darkturquoise","purple","chartreuse","mediumvioletred","darkorange","cadetblue","slateblue","violet","mediumblue","burlywood","red","tan","steelblue","royalblue","rosybrown","sandybrown","orchid","lightsteelblue","goldenrod","rebeccapurple","aqua","cyan","chocolate","saddlebrown","greenyellow","sienna","brown","maroon","darkseagreen","darkorchid","&#9748","&#9752","&#9889","&#9961","&#9973","&#9975","&#9917","&#9918","&#9924","&#9925","&#9968","&#9969"];
+    let colorsSymbols = ["indianred","palegoldenrod","darkred","turquoise","thistle","lawngreen","lightcoral","indigo","salmon", "darksalmon","paleturquoise","mediumturquoise","lightslategray","lavender","dodgerblue","lightsalmon","pink","slategray","firebrick","darkmagenta","aquamarine","cornflowerblue","mediumslateblue","lightpink","lime","deepskyblue","peachpuff","hotpink","deeppink","khaki","crimson","limegreen","orange","midnightblue","darkslategray","plum","darkturquoise","purple","chartreuse","mediumvioletred","darkorange","cadetblue","slateblue","violet","mediumblue","burlywood","red","tan","steelblue","royalblue","rosybrown","sandybrown","orchid","lightsteelblue","goldenrod","rebeccapurple","aqua","cyan","chocolate","saddlebrown","greenyellow","sienna","brown","maroon","darkseagreen","darkorchid","&#9748","&#9752","&#9889","&#9961","&#9973","&#9975","&#9917","&#9918","&#9924","&#9925","&#9968","&#9969","&#9835","&#9734","&#9825","&#9711","&#9651","&#9634","&#9728","&#9729","&#9786","&#9790","&#9812","&#9813"];
 
     //Initialize the selected color and symbol to an empty string
     let selectedColor = "";     
@@ -28,7 +28,7 @@ let pixelPainter = (function(){
 
     //Create the rows and columns of pixels for the palette
     //This creates the rows
-    for(var i=1; i<=13; i++){
+    for(var i=1; i<=15; i++){
         let rowElem = document.createElement("div");
         rowElem.className = "row";
         colorSwatchBody.appendChild(rowElem);

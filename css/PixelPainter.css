@@ -5,15 +5,16 @@ body {
 #pixelPainter{
     display: flex;
     flex-flow: row wrap;
-    /* border: 1px solid black; */
+    border: 1px solid black;
     margin: 0;
     height: 700px;
     width: 1000px;
 }
 
+/******* Palette *******/
 #colorSwatchBody {
-    /* border: 1px solid red; */
-    height: 500px;
+    border: 1px solid red;
+    height: 700px;
     width: 180px;
     text-align: center;
 }
@@ -21,28 +22,29 @@ body {
 .row {
     display: flex;
     flex-flow: row nowrap; 
-    height: 30px;
-    width: 180px;
     border-top: 1px solid black;
     border-left: 1px solid black;
+    height: 30px;
+    width: 180px;
 }
 
 .pixel{
     display: flex;
     flex-flow: row nowrap;
+    justify-content: center;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
     height: 30px;
     width: 30px;
     cursor: pointer;
-    justify-content: center;
 }
 
+/******* Canvas *******/
 #canvasBody {
     /* border: 1px solid blue; */
+    margin-left: 100px;
     height: 602px;
     width: 600px;
-    margin-left: 100px;
 }
 
 .canvasRow {
@@ -57,23 +59,13 @@ body {
 .square{
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
     height: 60px;
     width: 60px;
     cursor: pointer;
-    justify-content: center;
     font-size: 50px;
-}
-
-#erase {
-    margin: 30px 0;
-    padding: 0 20px;
-}
-
-#clear {
-    margin: 0;
-    padding: 0 20px;
 }
 
 button{
@@ -90,6 +82,17 @@ button:active {
     box-shadow: 0 4px #666;
     transform: translateY(3px);
 }
+
+#erase {
+    margin: 30px 0;
+    padding: 0 20px;
+}
+
+#clear {
+    margin: 0;
+    padding: 0 20px;
+}
+
 
 @media only screen and (max-width: 1024px) {
     #canvasBody {

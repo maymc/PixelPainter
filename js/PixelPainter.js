@@ -9,9 +9,10 @@ let pixelPainter = (function(){
     
     let selectedColor = "";     //Set the selected color to an empty string
     let selectedSymbol = "";    //Set the selected symbol to an empty string
-    let eraseCount = 0;         //Flag for when erase is clicked
+    let eraseFlag = false;      //Flag for when erase is clicked
     let savedGridColors = [];   //Stores the colors to be saved
     let savedGridSymbols = [];  //Stores the symbols to be saved
+    let saveFlag = false;       //Flag for when save is clicked
 
     //DEBUG - Check that there are enough colors/symbols to fill palette
     console.log("num colors/symbols in palette: " + colorsSymbols.length);
@@ -64,29 +65,27 @@ let pixelPainter = (function(){
     function pickColor(){
         //Store the color temporarily. It will be used to color the canvas
         selectedColor = this.style.backgroundColor;
+        console.log("selectedColor from palette: " + selectedColor);
 
         //Set the selectedSymbol to an empty string. Only one color/symbol can be selected at once
         selectedSymbol = "";
 
-        //Reset the erase count, user is no longer erasing
-        eraseCount = 0;
-        console.log("eraseCount at pickedColor: " + eraseCount);
-
-        console.log("selectedColor from palette: " + selectedColor);
+        //Reset the erase flag, user is no longer erasing
+        eraseFlag = false;
+        console.log("eraseFlag at pickedColor: " + eraseFlag);
     }
 
     function pickSymbol(){
         //Store the symbol temporarily. It will be used to color the canvas
         selectedSymbol = this.innerHTML;
+        console.log("selectedSymbol from palette: " + selectedSymbol);
 
         //Set the selectedColor to an empty string. Only one color/symbol can be selected at once
         selectedColor = "";
 
-        //Reset the erase count, user is no longer erasing
-        eraseCount = 0;
-        console.log("eraseCount at pickedSymbol: " + eraseCount);
-
-        console.log("selectedSymbol from palette: " + selectedSymbol);
+        //Reset the erase flag, user is no longer erasing
+        eraseFlag = false;
+        console.log("eraseFlag at pickedSymbol: " + eraseFlag);
     }
 
     /*********************/
@@ -130,7 +129,7 @@ let pixelPainter = (function(){
             this.innerHTML = selectedSymbol;
         }
         //If the selectedSymbol is empty and the erase button was clicked, fill the square with no symbol and no color. This is a workaround to allow the user to erase both the symbol and color when erasing a square
-        else if(selectedSymbol === "" && eraseCount === 1){
+        else if(selectedSymbol === "" && eraseFlag === true){
             this.innerHTML = selectedSymbol;
             this.style.backgroundColor = selectedColor;
         }
@@ -159,13 +158,13 @@ let pixelPainter = (function(){
     function eraseColorSymbol(){
         console.log("DEBUG - erase was clicked");
 
+        //Set the erase flag to true - user is erasing
+        eraseFlag = true;
+        console.log("eraseFlag at erase: " + eraseFlag);
+
         //Set the selected color to white to "erase" the square's color. Set the selected symbol to an empty string to "remove"/erase the symbol
         selectedColor = "white";
         selectedSymbol = "";
-
-        //Update the erase flag
-        eraseCount = 1;
-        console.log("eraseCount at erase: " + eraseCount);
     }
 
     //Create the clear button
@@ -204,6 +203,10 @@ let pixelPainter = (function(){
     //Function to save the current canvas, only one can be saved at a time
     function saveGrid(){
         console.log("DEBUG - save was clicked");
+        
+        //Set the save flag to true - canvas grid was saved
+        saveFlag = true;
+        console.log("saveFlag: " + saveFlag);
 
         savedGridColors = [];       //Reset the colors saved for new save
         savedGridSymbols = [];      //Reset the symbols saved for new save
@@ -215,8 +218,8 @@ let pixelPainter = (function(){
         }
 
         //DEBUG - Check what was saved
-        console.log(savedGridColors);
-        console.log(savedGridSymbols);
+        console.log("savedGridColors: " + savedGridColors);
+        console.log("savedGridSymbols: " + savedGridSymbols);
 
         //Clear the canvas after it was saved so user can start fresh
         clearCanvas();  
@@ -237,10 +240,20 @@ let pixelPainter = (function(){
     function loadGrid(){
         console.log("DEBUG - load was clicked");
 
+        console.log("savedGridColors: " + savedGridColors);
+        console.log("savedGridSymbols: " + savedGridSymbols);
+
         //Iterate through the canvas squares and apply the saved colors and symbols to the respective squares
-        for(var i=0; i<gridSquare.length; i++){
-            gridSquare[i].style.backgroundColor = savedGridColors[i];
-            gridSquare[i].innerHTML = savedGridSymbols[i];
+
+        //If nothing was previously saved, alert the user
+        if(saveFlag === false){
+            alert("Nothing to load");
+        }
+        else{
+            for(var i=0; i<gridSquare.length; i++){
+                gridSquare[i].style.backgroundColor = savedGridColors[i];
+                gridSquare[i].innerHTML = savedGridSymbols[i];
+            }
         }
     }
 

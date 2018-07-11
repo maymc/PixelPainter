@@ -44,6 +44,10 @@ h1{
     font-size: 22px;
 }
 
+.pixel:hover{
+    opacity: 0.5;
+}
+
 /******* Canvas *******/
 #canvasBody {
     /* border: 1px solid blue; */

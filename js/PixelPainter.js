@@ -5,12 +5,13 @@ let pixelPainter = (function(){
     /*********************/
     
     //Colors, stamps, shapes, symbols that will fill the palette
-    let colorsSymbols = ["indianred","palegoldenrod","darkred","turquoise","thistle","lawngreen","lightcoral","indigo","salmon", "darksalmon","paleturquoise","mediumturquoise","lightslategray","lavender","dodgerblue","lightsalmon","pink","slategray","firebrick","darkmagenta","aquamarine","cornflowerblue","mediumslateblue","lightpink","lime","deepskyblue","peachpuff","hotpink","deeppink","khaki","crimson","limegreen","orange","midnightblue","darkslategray","plum","darkturquoise","purple","chartreuse","mediumvioletred","darkorange","cadetblue","slateblue","violet","mediumblue","burlywood","red","tan","steelblue","royalblue","rosybrown","sandybrown","orchid","lightsteelblue","goldenrod","rebeccapurple","aqua","cyan","chocolate","saddlebrown","greenyellow","sienna","brown","maroon","darkseagreen","darkorchid","&#9748","&#9752","&#9889","&#9961","&#9973","&#9975","&#9917","&#9918","&#9924","&#9925","&#9968","&#9969","&#9835","&#9734","&#9825","&#9711","&#9651","&#9634","&#9728","&#9729","&#9786","&#9790","&#9812","&#9813"];
-
-    //Initialize the selected color and symbol to an empty string
-    let selectedColor = "";     
-    let selectedSymbol = "";
-    let eraseCount = 0;     //Flag for whether the erase button was clicked
+    const colorsSymbols = ["indianred","palegoldenrod","darkred","turquoise","thistle","lawngreen","lightcoral","indigo","salmon", "darksalmon","paleturquoise","mediumturquoise","lightslategray","lavender","dodgerblue","lightsalmon","pink","slategray","firebrick","darkmagenta","aquamarine","cornflowerblue","mediumslateblue","lightpink","lime","deepskyblue","peachpuff","hotpink","deeppink","khaki","crimson","limegreen","orange","midnightblue","darkslategray","plum","darkturquoise","purple","chartreuse","mediumvioletred","darkorange","cadetblue","slateblue","violet","mediumblue","burlywood","red","tan","steelblue","royalblue","rosybrown","sandybrown","orchid","lightsteelblue","goldenrod","rebeccapurple","navajowhite","cyan","chocolate","saddlebrown","greenyellow","sienna","brown","maroon","darkseagreen","darkorchid","&#9748","&#9752","&#9889","&#9961","&#9973","&#9975","&#9917","&#9918","&#9924","&#9925","&#9968","&#9969","&#9835","&#9734","&#9825","&#9711","&#9651","&#9634","&#9728","&#9729","&#9786","&#9790","&#9812","&#9813"];
+    
+    let selectedColor = "";     //Set the selected color to an empty string
+    let selectedSymbol = "";    //Set the selected symbol to an empty string
+    let eraseCount = 0;         //Flag for when erase is clicked
+    let savedGridColors = [];   //Stores the colors to be saved
+    let savedGridSymbols = [];  //Stores the symbols to be saved
 
     //DEBUG - Check that there are enough colors/symbols to fill palette
     console.log("num colors/symbols in palette: " + colorsSymbols.length);
@@ -22,27 +23,27 @@ let pixelPainter = (function(){
     /*   The Palette     */
     /*********************/
     //Create the palette's body
-    let colorSwatchBody = document.createElement("div");
+    const colorSwatchBody = document.createElement("div");
     colorSwatchBody.id = "colorSwatchBody";
     pixelPainterDiv.appendChild(colorSwatchBody);
 
     //Create the rows and columns of pixels for the palette
     //This creates the rows
     for(var i=1; i<=15; i++){
-        let rowElem = document.createElement("div");
+        const rowElem = document.createElement("div");
         rowElem.className = "row";
         colorSwatchBody.appendChild(rowElem);
 
         //This creates the individual squares per row
         for(var j=1; j<=6; j++){
-            let pixelElem = document.createElement("div");
+            const pixelElem = document.createElement("div");
             pixelElem.className = "pixel";
             rowElem.appendChild(pixelElem);
         }
     }
 
     //Apply a color/symbol to each pixel and add an event listener to each pixel to make it clickable
-    let pixelColorSymbol = document.getElementsByClassName("pixel");
+    const pixelColorSymbol = document.getElementsByClassName("pixel");
     
     for(var i=0; i<colorsSymbols.length; i++){
         //If the array element is a symbol, fill the pixel with a symbol. Callback for the event listener is for a symbol
@@ -92,7 +93,7 @@ let pixelPainter = (function(){
     /*     The Canvas    */
     /*********************/
     //Create the canvas grid body
-    let canvasBody = document.createElement("div");
+    const canvasBody = document.createElement("div");
     canvasBody.id = "canvasBody";
     pixelPainterDiv.appendChild(canvasBody);
 
@@ -115,7 +116,7 @@ let pixelPainter = (function(){
     /*   Canvas Functions   */
     /************************/
     //Add an event listener to each pixel to make it clickable
-    let gridSquare = document.getElementsByClassName("square");
+    const gridSquare = document.getElementsByClassName("square");
 
     for(var i=0; i<gridSquare.length; i++){
         gridSquare[i].addEventListener("click", fillSquare);
@@ -144,14 +145,14 @@ let pixelPainter = (function(){
     /*   Buttons     */
     /*****************/
     //Create the erase button
-    let eraseBtn = document.createElement("button");
+    const eraseBtn = document.createElement("button");
     eraseBtn.type = "button";
     eraseBtn.id = "erase";
     eraseBtn.innerHTML = "erase";
     colorSwatchBody.appendChild(eraseBtn);
     
     //Add an event listener to the erase button
-    let eraseBtnElem = document.getElementById("erase");
+    const eraseBtnElem = document.getElementById("erase");
     eraseBtnElem.addEventListener("click", eraseColorSymbol);
 
     //Function to erase the color/symbol from the square clicked on
@@ -168,14 +169,14 @@ let pixelPainter = (function(){
     }
 
     //Create the clear button
-    let clearBtn = document.createElement("button");
+    const clearBtn = document.createElement("button");
     clearBtn.type = "button";
     clearBtn.id = "clear";
     clearBtn.innerHTML = "clear";
     colorSwatchBody.appendChild(clearBtn);
 
     //Add an event listener to the clear button
-    let clearBtnElem = document.getElementById("clear");
+    const clearBtnElem = document.getElementById("clear");
     clearBtnElem.addEventListener("click", clearCanvas);
 
     //Function to clear the entire canvas of colors and symbols
@@ -189,5 +190,58 @@ let pixelPainter = (function(){
         }
     }
 
+    //Create the save button
+    const saveBtn = document.createElement("button");
+    saveBtn.type = "button";
+    saveBtn.id = "save";
+    saveBtn.innerHTML = "save";
+    colorSwatchBody.appendChild(saveBtn);
+
+    //Add an event listener to the save button
+    const saveBtnElem = document.getElementById("save");
+    saveBtnElem.addEventListener("click", saveGrid);
+
+    //Function to save the current canvas, only one can be saved at a time
+    function saveGrid(){
+        console.log("DEBUG - save was clicked");
+
+        savedGridColors = [];       //Reset the colors saved for new save
+        savedGridSymbols = [];      //Reset the symbols saved for new save
+
+        //Iterate through the canvas squares and save the colors and symbols
+        for(var i=0; i<gridSquare.length; i++){
+            savedGridColors.push(gridSquare[i].style.backgroundColor);
+            savedGridSymbols.push(gridSquare[i].innerHTML);
+        }
+
+        //DEBUG - Check what was saved
+        console.log(savedGridColors);
+        console.log(savedGridSymbols);
+
+        //Clear the canvas after it was saved so user can start fresh
+        clearCanvas();  
+    }
+
+    //Create a load button to load the previously saved grid
+    const loadBtn = document.createElement("button");
+    loadBtn.type = "button";
+    loadBtn.id = "load";
+    loadBtn.innerHTML = "load";
+    colorSwatchBody.appendChild(loadBtn);
+
+    //Add an event listener to the load button
+    const loadBtnElem = document.getElementById("load");
+    loadBtnElem.addEventListener("click", loadGrid);
+
+    //Function to load the saved canvas onto the canvas
+    function loadGrid(){
+        console.log("DEBUG - load was clicked");
+
+        //Iterate through the canvas squares and apply the saved colors and symbols to the respective squares
+        for(var i=0; i<gridSquare.length; i++){
+            gridSquare[i].style.backgroundColor = savedGridColors[i];
+            gridSquare[i].innerHTML = savedGridSymbols[i];
+        }
+    }
 
 }());

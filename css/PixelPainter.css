@@ -76,6 +76,12 @@ button{
     font-size: 25px;
     border: 2px solid black;
     border-radius: 15px;
+    margin: 10px 0 0 0;
+    padding: 0 20px;
+}
+
+button:hover{
+    background-color: pink;
 }
 
 button:active {
@@ -84,8 +90,8 @@ button:active {
     transform: translateY(3px);
 }
 
-#erase {
-    margin: 30px 0;
+/* #erase,  {
+    margin: 20px 0 0 0;
     padding: 0 20px;
 }
 
@@ -93,6 +99,16 @@ button:active {
     margin: 0;
     padding: 0 20px;
 }
+
+#save {
+    margin: 0;
+    padding: 0 20px;
+}
+
+#load {
+    margin: 0;
+    padding: 0 20px;
+} */
 
 
 @media only screen and (max-width: 1024px) {

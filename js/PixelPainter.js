@@ -299,4 +299,36 @@ let pixelPainter = (function(){
         }
     }
 
+    const randomizeBtn = document.createElement("button");
+    randomizeBtn.type = "button";
+    randomizeBtn.id = "randomize";
+    randomizeBtn.innerHTML = "randomize";
+    colorSwatchBody.appendChild(randomizeBtn);
+
+    //Add an event listener to the load button
+    const randomizeBtnElem = document.getElementById("randomize");
+    randomizeBtnElem.addEventListener("click", randomizeColors);
+
+    function randomizeColors(){
+        console.log("old colorsSymbols: " + colorsSymbols);
+        for(var i=0; i<colorsSymbols.length; i++){
+            if(!colorsSymbols[i].match(/&#/g)){
+                let colorR = Math.floor(Math.random() * 255);
+                console.log("colorR: " + colorR);
+        
+                let colorG = Math.floor(Math.random() * 255);
+                console.log("colorG: " + colorG);
+        
+                let colorB = Math.floor(Math.random() * 255);
+                console.log("colorB: " + colorB);
+        
+                let rgb = "rgb(" + colorR + "," + colorG + "," + colorB + ")";
+                console.log("rgb: " + rgb);
+                colorsSymbols.splice(i,1,rgb);
+                pixelColorSymbol[i].style.backgroundColor = colorsSymbols[i];
+            }
+        }
+        console.log("randomized colorsSymbols: " + colorsSymbols);
+    }
+
 }());

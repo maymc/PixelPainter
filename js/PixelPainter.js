@@ -13,6 +13,7 @@ let pixelPainter = (function(){
     let savedGridColors = [];   //Stores the colors to be saved
     let savedGridSymbols = [];  //Stores the symbols to be saved
     let saveFlag = false;       //Flag for when save is clicked
+    let mouseIsDown = false;    //Flag for when mouseDown
 
     //DEBUG - Check that there are enough colors/symbols to fill palette
     console.log("num colors/symbols in palette: " + colorsSymbols.length);
@@ -118,7 +119,19 @@ let pixelPainter = (function(){
     const gridSquare = document.getElementsByClassName("square");
 
     for(var i=0; i<gridSquare.length; i++){
-        gridSquare[i].addEventListener("click", fillSquare);
+        gridSquare[i].addEventListener("mousedown", fillSquare);
+    }
+
+    for(var i=0; i<gridSquare.length; i++){
+        gridSquare[i].addEventListener("mousedown", setMouseDown);
+    }
+
+    for(var i=0; i<gridSquare.length; i++){
+        gridSquare[i].addEventListener("mouseup", setMouseUp);
+    }
+
+    for(var i=0; i<gridSquare.length; i++){
+        gridSquare[i].addEventListener("mouseover", dragColorSymbol);
     }
 
     //Function to fill the squares on the canvas after they are clicked
@@ -139,6 +152,38 @@ let pixelPainter = (function(){
             this.style.backgroundColor = selectedColor;
         }
     }
+
+    //Function to fill the squares on the canvas after they are clicked
+    function dragColorSymbol(){
+        //If a symbol is selected, fill the square with a symbol
+        if(selectedSymbol !== "" && mouseIsDown){
+            console.log("Filling w/selectedSymbol: " + selectedSymbol);
+            this.innerHTML = selectedSymbol;
+        }
+        //If the selectedSymbol is empty and the erase button was clicked, fill the square with no symbol and no color. This is a workaround to allow the user to erase both the symbol and color when erasing a square
+        else if(selectedSymbol === "" && eraseFlag === true){
+            this.innerHTML = selectedSymbol;
+            this.style.backgroundColor = selectedColor;
+        }
+        //If a color was selected, fill the square with the color
+        else if(selectedColor !== "" && mouseIsDown){
+            console.log("Filling w/selectedColor: " + selectedColor);
+            this.style.backgroundColor = selectedColor;
+        }
+        else{
+            mouseIsDown = false;
+        }
+    }
+
+    function setMouseDown(){
+        mouseIsDown = true;
+    }
+    function setMouseUp(){
+        mouseIsDown = false;
+    }
+
+
+
 
     /*****************/
     /*   Buttons     */

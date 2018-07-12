@@ -189,6 +189,7 @@ let pixelPainter = (function(){
     const eraseBtn = document.createElement("button");
     eraseBtn.type = "button";
     eraseBtn.id = "erase";
+    eraseBtn.className = "paletteBtns"
     eraseBtn.innerHTML = "erase";
     colorSwatchBody.appendChild(eraseBtn);
     
@@ -213,6 +214,7 @@ let pixelPainter = (function(){
     const clearBtn = document.createElement("button");
     clearBtn.type = "button";
     clearBtn.id = "clear";
+    clearBtn.className = "paletteBtns"
     clearBtn.innerHTML = "clear";
     colorSwatchBody.appendChild(clearBtn);
 
@@ -235,6 +237,7 @@ let pixelPainter = (function(){
     const saveBtn = document.createElement("button");
     saveBtn.type = "button";
     saveBtn.id = "save";
+    saveBtn.className = "canvasBtns";
     saveBtn.innerHTML = "save";
     canvasBody.appendChild(saveBtn);
 
@@ -271,6 +274,7 @@ let pixelPainter = (function(){
     const loadBtn = document.createElement("button");
     loadBtn.type = "button";
     loadBtn.id = "load";
+    loadBtn.className = "canvasBtns";
     loadBtn.innerHTML = "load";
     canvasBody.appendChild(loadBtn);
 
@@ -302,7 +306,8 @@ let pixelPainter = (function(){
     const randomizeBtn = document.createElement("button");
     randomizeBtn.type = "button";
     randomizeBtn.id = "randomize";
-    randomizeBtn.innerHTML = "randomize";
+    randomizeBtn.className = "paletteBtns"
+    randomizeBtn.innerHTML = "randomize colors";
     colorSwatchBody.appendChild(randomizeBtn);
 
     //Add an event listener to the load button

@@ -1,5 +1,5 @@
 body {
-    margin: 5px;
+    margin: 25px;
 }
 
 h1{
@@ -19,7 +19,7 @@ h1{
 /******* Palette *******/
 #colorSwatchBody {
     /* border: 1px solid red; */
-    height: 630px;
+    height: 670px;
     width: 180px;
     text-align: center;
 }
@@ -53,7 +53,7 @@ h1{
 #canvasBody {
     /* border: 1px solid blue; */
     margin-left: 100px;
-    height: 680px;
+    height: 670px;
     width: 601px;
     text-align: center;
 }
@@ -78,24 +78,34 @@ h1{
     cursor: pointer;
     font-size: 50px;
 }
+.paletteBtns{
+    cursor: pointer;
+    box-shadow: 0 4px #999;
+    font-weight: bold;
+    font-size: 22px;
+    border: 2px solid black;
+    border-radius: 15px;
+    margin: 20px 5px 0 5px;
+    padding: 0 10px;
+}
 
-button{
+.canvasBtns{
     cursor: pointer;
     box-shadow: 0 4px #999;
     font-weight: bold;
     font-size: 25px;
     border: 2px solid black;
     border-radius: 15px;
-    margin: 20px 20px 0 20px;
-    padding: 0 20px;
+    margin: 20px 50px 0 50px;
+    padding: 0 25px;
 }
 
-button#erase:hover, button#clear:hover{
+.paletteBtns:hover{
     background-color: hotpink;
     color: white;
 }
 
-button#save:hover, button#load:hover{
+.canvasBtns:hover{
     background-color: yellowgreen;
     color: white;
 }
@@ -107,12 +117,13 @@ button:active {
     transform: translateY(3px);
 }
 
+/******* Media Queries *****************************/
 @media only screen and (max-width: 1024px) {
     #pixelPainter{
         display: flex;
         flex-flow: row wrap;
         border: 10px double black;
-        height: 580px;
+        height: 610px;
         width: 708px;
         margin: auto;
         padding: 15px;
@@ -120,7 +131,7 @@ button:active {
 
     #colorSwatchBody {
         /* border: 1px solid red; */
-        height: 580px;
+        height: 610px;
         width: 180px;
         text-align: center;
     }
@@ -152,15 +163,26 @@ button:active {
         font-size: 35px;
     }
 
-    button{
+    .paletteBtns{
         cursor: pointer;
         box-shadow: 0 4px #999;
         font-weight: bold;
-        font-size: 20px;
+        font-size: 22px;
         border: 2px solid black;
         border-radius: 15px;
-        margin: 20px 20px 0 20px;
-        padding: 0 20px;
+        margin: 20px 5px 0 5px;
+        padding: 0 10px;
+    }
+    
+    .canvasBtns{
+        cursor: pointer;
+        box-shadow: 0 4px #999;
+        font-weight: bold;
+        font-size: 25px;
+        border: 2px solid black;
+        border-radius: 15px;
+        margin: 20px 50px 0 50px;
+        padding: 0 25px;
     }
 }
 
@@ -169,54 +191,69 @@ button:active {
         display: flex;
         flex-flow: row wrap;
         border: 10px double black;
-        height: 590px;
+        height: 1250px;
         width: 545px;
         margin: auto;
         padding: 10px;
     }
 
     #colorSwatchBody {
-        /* border: 1px solid red; */
-        height: 590px;
+        border: 1px solid red;
+        height: 200px;
         width: 180px;
         text-align: center;
+        margin: 0 auto;
+        padding: 0 0 420px 0;
+        
     }
 
     #canvasBody {
-        /* border: 1px solid blue; */
-        height: 370px;
-        width: 301px;
-        margin-left: 50px;
+        border: 1px solid blue;
+        height: 511px;
+        width: 501px;
+        margin: 0 auto;
     }
+
     .canvasRow {
         display: flex;
         flex-flow: row nowrap; 
         border-top: 1px solid black;
         border-left: 1px solid black;
-        height: 30px;
-        width: 300px;
+        height: 50px;
+        width: 500px;
     }
-    
+
     .square{
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
         border-bottom: 1px solid black;
         border-right: 1px solid black;
-        height: 30px;
-        width: 30px;
+        height: 50px;
+        width: 50px;
         cursor: pointer;
         font-size: 20px;
     }
 
-    button{
+    .paletteBtns{
         cursor: pointer;
         box-shadow: 0 4px #999;
         font-weight: bold;
         font-size: 20px;
         border: 2px solid black;
         border-radius: 15px;
-        margin: 20px 20px 0 20px;
+        margin: 20px 5px 0 5px;
+        padding: 0 10px;
+    }
+    
+    .canvasBtns{
+        cursor: pointer;
+        box-shadow: 0 4px #999;
+        font-weight: bold;
+        font-size: 20px;
+        border: 2px solid black;
+        border-radius: 15px;
+        margin: 20px 30px 0 30px;
         padding: 0 20px;
     }
     

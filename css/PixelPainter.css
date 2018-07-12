@@ -1,16 +1,17 @@
 body {
-    margin: 45px;
+    margin: 5px;
 }
 
 h1{
     text-align: center;
 }
+
 #pixelPainter{
     display: flex;
     flex-flow: row wrap;
     border: 10px double black;
-    height: 700px;
-    width: 883px;
+    height: 670px;
+    width: 900px;
     margin: auto;
     padding: 20px;
 }
@@ -18,7 +19,7 @@ h1{
 /******* Palette *******/
 #colorSwatchBody {
     /* border: 1px solid red; */
-    height: 699px;
+    height: 630px;
     width: 180px;
     text-align: center;
 }
@@ -52,8 +53,9 @@ h1{
 #canvasBody {
     /* border: 1px solid blue; */
     margin-left: 100px;
-    height: 611px;
+    height: 680px;
     width: 601px;
+    text-align: center;
 }
 
 .canvasRow {
@@ -84,7 +86,7 @@ button{
     font-size: 25px;
     border: 2px solid black;
     border-radius: 15px;
-    margin: 20px 0 0 0;
+    margin: 20px 20px 0 20px;
     padding: 0 20px;
 }
 
@@ -110,23 +112,23 @@ button:active {
         display: flex;
         flex-flow: row wrap;
         border: 10px double black;
-        height: 650px;
-        width: 703px;
+        height: 580px;
+        width: 708px;
         margin: auto;
         padding: 15px;
     }
 
     #colorSwatchBody {
         /* border: 1px solid red; */
-        height: 649px;
+        height: 580px;
         width: 180px;
         text-align: center;
     }
 
     #canvasBody {
         /* border: 1px solid blue; */
-        height: 460px;
-        width: 450px;
+        height: 520px;
+        width: 451px;
         margin-left: 70px;
     }
     .canvasRow {
@@ -157,7 +159,7 @@ button:active {
         font-size: 20px;
         border: 2px solid black;
         border-radius: 15px;
-        margin: 10px 5px;
+        margin: 20px 20px 0 20px;
         padding: 0 20px;
     }
 }
@@ -167,23 +169,23 @@ button:active {
         display: flex;
         flex-flow: row wrap;
         border: 10px double black;
-        height: 650px;
-        width: 533px;
+        height: 590px;
+        width: 545px;
         margin: auto;
         padding: 10px;
     }
 
     #colorSwatchBody {
         /* border: 1px solid red; */
-        height: 649px;
+        height: 590px;
         width: 180px;
         text-align: center;
     }
 
     #canvasBody {
         /* border: 1px solid blue; */
-        height: 310px;
-        width: 300px;
+        height: 370px;
+        width: 301px;
         margin-left: 50px;
     }
     .canvasRow {
@@ -214,7 +216,7 @@ button:active {
         font-size: 20px;
         border: 2px solid black;
         border-radius: 15px;
-        margin: 10px 5px;
+        margin: 20px 20px 0 20px;
         padding: 0 20px;
     }
     

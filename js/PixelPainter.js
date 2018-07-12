@@ -236,7 +236,7 @@ let pixelPainter = (function(){
     saveBtn.type = "button";
     saveBtn.id = "save";
     saveBtn.innerHTML = "save";
-    colorSwatchBody.appendChild(saveBtn);
+    canvasBody.appendChild(saveBtn);
 
     //Add an event listener to the save button
     const saveBtnElem = document.getElementById("save");
@@ -272,7 +272,7 @@ let pixelPainter = (function(){
     loadBtn.type = "button";
     loadBtn.id = "load";
     loadBtn.innerHTML = "load";
-    colorSwatchBody.appendChild(loadBtn);
+    canvasBody.appendChild(loadBtn);
 
     //Add an event listener to the load button
     const loadBtnElem = document.getElementById("load");

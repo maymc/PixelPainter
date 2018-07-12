@@ -142,7 +142,7 @@ let pixelPainter = (function(){
             this.innerHTML = selectedSymbol;
         }
         //If the selectedSymbol is empty and the erase button was clicked, fill the square with no symbol and no color. This is a workaround to allow the user to erase both the symbol and color when erasing a square
-        else if(selectedSymbol === "" && eraseFlag === true){
+        else if(selectedSymbol === "" && eraseFlag){
             this.innerHTML = selectedSymbol;
             this.style.backgroundColor = selectedColor;
         }
@@ -161,7 +161,7 @@ let pixelPainter = (function(){
             this.innerHTML = selectedSymbol;
         }
         //If the selectedSymbol is empty and the erase button was clicked, fill the square with no symbol and no color. This is a workaround to allow the user to erase both the symbol and color when erasing a square
-        else if(selectedSymbol === "" && eraseFlag === true){
+        else if(selectedSymbol === "" && eraseFlag && mouseIsDown){
             this.innerHTML = selectedSymbol;
             this.style.backgroundColor = selectedColor;
         }
@@ -181,9 +181,6 @@ let pixelPainter = (function(){
     function setMouseUp(){
         mouseIsDown = false;
     }
-
-
-
 
     /*****************/
     /*   Buttons     */

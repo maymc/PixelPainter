@@ -13,7 +13,7 @@ let pixelPainter = (function(){
     let savedGridColors = [];   //Stores the colors to be saved
     let savedGridSymbols = [];  //Stores the symbols to be saved
     let saveFlag = false;       //Flag for when save is clicked
-    let mouseIsDown = false;    //Flag for when mouseDown
+    let mouseIsDown = false;    //Flag for when user clicks a canvas square
 
     //DEBUG - Check that there are enough colors/symbols to fill palette
     console.log("num colors/symbols in palette: " + colorsSymbols.length);
@@ -115,26 +115,30 @@ let pixelPainter = (function(){
     /************************/
     /*   Canvas Functions   */
     /************************/
-    //Add an event listener to each pixel to make it clickable
+    //Add an event listener to each grid square to make it do something when the user clicks or moves the mouse over the square.
     const gridSquare = document.getElementsByClassName("square");
 
+    //Event that allows user to click an individual square and fill it
     for(var i=0; i<gridSquare.length; i++){
         gridSquare[i].addEventListener("mousedown", fillSquare);
     }
 
+    //Event that sets the mouseIsDown flag when the user clicks a square
     for(var i=0; i<gridSquare.length; i++){
         gridSquare[i].addEventListener("mousedown", setMouseDown);
     }
 
+    //Event that sets the mouseIsDown flag to false when the user lets go of the mouse button
     for(var i=0; i<gridSquare.length; i++){
         gridSquare[i].addEventListener("mouseup", setMouseUp);
     }
 
+    //Event that allows user to drag the color/symbol if they click and drag
     for(var i=0; i<gridSquare.length; i++){
         gridSquare[i].addEventListener("mouseover", dragColorSymbol);
     }
 
-    //Function to fill the squares on the canvas after they are clicked
+    //Function to fill the individual squares on the canvas after they are clicked
     function fillSquare(){
         //If a symbol is selected, fill the square with a symbol
         if(selectedSymbol !== ""){
@@ -153,14 +157,14 @@ let pixelPainter = (function(){
         }
     }
 
-    //Function to fill the squares on the canvas after they are clicked
+    //Function to fill the squares on the canvas when the user drags their mouse
     function dragColorSymbol(){
         //If a symbol is selected, fill the square with a symbol
         if(selectedSymbol !== "" && mouseIsDown){
             console.log("Filling w/selectedSymbol: " + selectedSymbol);
             this.innerHTML = selectedSymbol;
         }
-        //If the selectedSymbol is empty and the erase button was clicked, fill the square with no symbol and no color. This is a workaround to allow the user to erase both the symbol and color when erasing a square
+        //If the selectedSymbol is empty and the erase button was clicked and the user is dragging their mouse, fill the square with no symbol and no color. This is a workaround to allow the user to erase both the symbol and color when erasing a square
         else if(selectedSymbol === "" && eraseFlag && mouseIsDown){
             this.innerHTML = selectedSymbol;
             this.style.backgroundColor = selectedColor;
@@ -171,13 +175,17 @@ let pixelPainter = (function(){
             this.style.backgroundColor = selectedColor;
         }
         else{
+            //Reset mouse flag to false when the user lets go of the mouse button
             mouseIsDown = false;
         }
     }
 
+    //Function that sets mouseIsDown flag to true when user clicks on a square on the canvas
     function setMouseDown(){
         mouseIsDown = true;
     }
+
+    //Function that sets mouseIsDown flag to false when user lets go of the mouse button
     function setMouseUp(){
         mouseIsDown = false;
     }
@@ -303,6 +311,7 @@ let pixelPainter = (function(){
         }
     }
 
+    //Create a button that randomizes the colors on the palette
     const randomizeBtn = document.createElement("button");
     randomizeBtn.type = "button";
     randomizeBtn.id = "randomize";
@@ -310,14 +319,22 @@ let pixelPainter = (function(){
     randomizeBtn.innerHTML = "randomize colors";
     colorSwatchBody.appendChild(randomizeBtn);
 
-    //Add an event listener to the load button
+    //Add an event listener to the randomize button
     const randomizeBtnElem = document.getElementById("randomize");
     randomizeBtnElem.addEventListener("click", randomizeColors);
 
+    //Function to get random colors and replace the current palette colors with new random colors
     function randomizeColors(){
+        //DEBUG - Show what the old colors were
         console.log("old colorsSymbols: " + colorsSymbols);
+
+        //Iterate through the array of colors and symbols
         for(var i=0; i<colorsSymbols.length; i++){
+
+            //If the array element is not a symbol
             if(!colorsSymbols[i].match(/&#/g)){
+
+                //Get a random number for each rgb value
                 let colorR = Math.floor(Math.random() * 255);
                 console.log("colorR: " + colorR);
         
@@ -327,12 +344,18 @@ let pixelPainter = (function(){
                 let colorB = Math.floor(Math.random() * 255);
                 console.log("colorB: " + colorB);
         
+                //Concatenate the random rgb numbers into an rgb color
                 let rgb = "rgb(" + colorR + "," + colorG + "," + colorB + ")";
+
+                //DEBUG - check the color string
                 console.log("rgb: " + rgb);
+
+                //Remove the current array element color and replace it with the new random color
                 colorsSymbols.splice(i,1,rgb);
                 pixelColorSymbol[i].style.backgroundColor = colorsSymbols[i];
             }
         }
+        //DEBUG - Check the new color palette's colors
         console.log("randomized colorsSymbols: " + colorsSymbols);
     }
 

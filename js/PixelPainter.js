@@ -200,10 +200,54 @@ let pixelPainter = (function(){
     eraseBtn.className = "paletteBtns"
     eraseBtn.innerHTML = "erase";
     colorSwatchBody.appendChild(eraseBtn);
+
+    //Create the clear button
+    const clearBtn = document.createElement("button");
+    clearBtn.type = "button";
+    clearBtn.id = "clear";
+    clearBtn.className = "paletteBtns"
+    clearBtn.innerHTML = "clear";
+    colorSwatchBody.appendChild(clearBtn);
+
+    //Create the save button
+    const saveBtn = document.createElement("button");
+    saveBtn.type = "button";
+    saveBtn.id = "save";
+    saveBtn.className = "canvasBtns";
+    saveBtn.innerHTML = "save";
+    canvasBody.appendChild(saveBtn);
+
+    //Create a load button to load the previously saved grid
+    const loadBtn = document.createElement("button");
+    loadBtn.type = "button";
+    loadBtn.id = "load";
+    loadBtn.className = "canvasBtns";
+    loadBtn.innerHTML = "load";
+    canvasBody.appendChild(loadBtn);
+
+    //Create a button that randomizes the colors on the palette
+    const randomizeBtn = document.createElement("button");
+    randomizeBtn.type = "button";
+    randomizeBtn.id = "randomize";
+    randomizeBtn.className = "paletteBtns"
+    randomizeBtn.innerHTML = "randomize colors";
+    colorSwatchBody.appendChild(randomizeBtn);
     
-    //Add an event listener to the erase button
+    //Add an event listener to the erase, clear, save, load, and randomizer button
     const eraseBtnElem = document.getElementById("erase");
     eraseBtnElem.addEventListener("click", eraseColorSymbol);
+
+    const clearBtnElem = document.getElementById("clear");
+    clearBtnElem.addEventListener("click", clearCanvas);
+
+    const saveBtnElem = document.getElementById("save");
+    saveBtnElem.addEventListener("click", saveGrid);
+
+    const loadBtnElem = document.getElementById("load");
+    loadBtnElem.addEventListener("click", loadGrid);
+
+    const randomizeBtnElem = document.getElementById("randomize");
+    randomizeBtnElem.addEventListener("click", randomizeColors);
 
     //Function to erase the color/symbol from the square clicked on
     function eraseColorSymbol(){
@@ -218,18 +262,6 @@ let pixelPainter = (function(){
         selectedSymbol = "";
     }
 
-    //Create the clear button
-    const clearBtn = document.createElement("button");
-    clearBtn.type = "button";
-    clearBtn.id = "clear";
-    clearBtn.className = "paletteBtns"
-    clearBtn.innerHTML = "clear";
-    colorSwatchBody.appendChild(clearBtn);
-
-    //Add an event listener to the clear button
-    const clearBtnElem = document.getElementById("clear");
-    clearBtnElem.addEventListener("click", clearCanvas);
-
     //Function to clear the entire canvas of colors and symbols
     function clearCanvas(){
         console.log("DEBUG - clear was clicked");
@@ -240,18 +272,6 @@ let pixelPainter = (function(){
             gridSquare[i].innerHTML = "";
         }
     }
-
-    //Create the save button
-    const saveBtn = document.createElement("button");
-    saveBtn.type = "button";
-    saveBtn.id = "save";
-    saveBtn.className = "canvasBtns";
-    saveBtn.innerHTML = "save";
-    canvasBody.appendChild(saveBtn);
-
-    //Add an event listener to the save button
-    const saveBtnElem = document.getElementById("save");
-    saveBtnElem.addEventListener("click", saveGrid);
 
     //Function to save the current canvas, only one can be saved at a time
     function saveGrid(){
@@ -278,18 +298,6 @@ let pixelPainter = (function(){
         clearCanvas();  
     }
 
-    //Create a load button to load the previously saved grid
-    const loadBtn = document.createElement("button");
-    loadBtn.type = "button";
-    loadBtn.id = "load";
-    loadBtn.className = "canvasBtns";
-    loadBtn.innerHTML = "load";
-    canvasBody.appendChild(loadBtn);
-
-    //Add an event listener to the load button
-    const loadBtnElem = document.getElementById("load");
-    loadBtnElem.addEventListener("click", loadGrid);
-
     //Function to load the saved canvas onto the canvas
     function loadGrid(){
         console.log("DEBUG - load was clicked");
@@ -310,18 +318,6 @@ let pixelPainter = (function(){
             }
         }
     }
-
-    //Create a button that randomizes the colors on the palette
-    const randomizeBtn = document.createElement("button");
-    randomizeBtn.type = "button";
-    randomizeBtn.id = "randomize";
-    randomizeBtn.className = "paletteBtns"
-    randomizeBtn.innerHTML = "randomize colors";
-    colorSwatchBody.appendChild(randomizeBtn);
-
-    //Add an event listener to the randomize button
-    const randomizeBtnElem = document.getElementById("randomize");
-    randomizeBtnElem.addEventListener("click", randomizeColors);
 
     //Function to get random colors and replace the current palette colors with new random colors
     function randomizeColors(){
